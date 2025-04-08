@@ -1,6 +1,7 @@
 # 정점의 개수-1만큼 비용을 반복 갱신
 # 시간복잡도 : O(VxE), V: 정점 수, E: 간선 수
 def bellman_ford(source, num_vertices, edges):
+    INF = 10 ** 10
     graph = [[] for _ in range(num_vertices)]
     for edge in edges:
         src_vertex, tgt_vertex, weight = edge
