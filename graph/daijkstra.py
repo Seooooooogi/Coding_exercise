@@ -4,6 +4,7 @@ from collections import defaultdict
 INF = 10 ** 10
 
 # 그리디한 풀이방법
+# O(ElogV), V: 정점 수, E: 간선 수
 def daijkstra(start, num_nodes, edges):
     graph = defaultdict(list)
     for cur_node, next_node, weight in edges:
