@@ -6,7 +6,7 @@ def solution(board, aloc, bloc):
         y, x = a_pos if step % 2 == 0 else b_pos
         win_steps, lose_steps = [], []
         can_move = False
-        b_win = True
+        opponent_win = True
         
         for i in range(4):
             ny, nx = y + dy[i], x + dx[i]
@@ -21,7 +21,7 @@ def solution(board, aloc, bloc):
                     win, total_steps = back([ny, nx], b_pos, visited | {(y, x)}, step+1)
                 else:
                     win, total_steps = back(a_pos, [ny, nx], visited | {(y, x)}, step+1)
-                b_win &= win
+                opponent_win &= win
                 if win:
                     win_steps.append(total_steps)
                 else:
@@ -29,7 +29,7 @@ def solution(board, aloc, bloc):
 
         if not can_move:
             return False, step
-        if b_win:
+        if opponent_win:
             return False, max(win_steps)
                 
         return True, min(lose_steps)
